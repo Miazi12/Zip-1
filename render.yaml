@@ -1,0 +1,15 @@
+# Render blueprint — deploy the proxy as a web service
+services:
+  - type: web
+    name: super-jarvis-llm-proxy
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: LLM_API_KEY
+        sync: false        # set this secret yourself in Render dashboard
+      - key: LLM_PROXY_TOKEN
+        sync: false
+      - key: CORS_ORIGIN
+        value: "*"
